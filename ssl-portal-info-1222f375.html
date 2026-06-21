@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5, user-scalable=yes">
+  <title>ayx – 简明访问指南与产品说明</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #f2f6f9;
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      color: #1d2b36;
+      line-height: 1.6;
+      padding: 1.2rem;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .page-wrapper {
+      max-width: 900px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    /* —— 卡片网格系统 —— */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.25rem;
+      margin: 2rem 0;
+    }
+
+    @media (min-width: 580px) {
+      .cards-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .card {
+      background: #ffffff;
+      border-radius: 18px;
+      padding: 1.5rem 1.3rem;
+      box-shadow: 0 4px 12px rgba(0, 30, 40, 0.06);
+      transition: transform 0.1s ease, box-shadow 0.2s;
+      border: 1px solid rgba(30, 160, 150, 0.10);
+    }
+
+    .card:hover {
+      box-shadow: 0 6px 16px rgba(0, 50, 60, 0.08);
+      transform: translateY(-2px);
+    }
+
+    .card h3 {
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin-bottom: 0.6rem;
+      color: #0d4f4a;
+      letter-spacing: 0.01em;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .card h3 .icon {
+      display: inline-block;
+      background: #d2eee9;
+      width: 1.6rem;
+      height: 1.6rem;
+      border-radius: 40%;
+      line-height: 1.6rem;
+      text-align: center;
+      font-size: 1rem;
+      color: #0a5c55;
+    }
+
+    .card p {
+      font-size: 0.95rem;
+      color: #2b3f4a;
+      margin-bottom: 0.2rem;
+    }
+
+    .card ul {
+      list-style: none;
+      padding-left: 0;
+      margin-top: 0.5rem;
+    }
+
+    .card li {
+      font-size: 0.9rem;
+      padding: 0.25rem 0 0.25rem 1.2rem;
+      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 10 10"><circle cx="5" cy="5" r="3" fill="%230d8b7a" opacity="0.7"/></svg>') left center no-repeat;
+      background-size: 10px;
+      margin-bottom: 0.2rem;
+    }
+
+    /* —— 主标题区 —— */
+    .hero {
+      text-align: left;
+      margin-top: 0.6rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .hero .tag {
+      display: inline-block;
+      background: #d0eae6;
+      color: #0a5a50;
+      padding: 0.2rem 1rem;
+      border-radius: 30px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      margin-bottom: 0.8rem;
+    }
+
+    .hero h1 {
+      font-size: 2.1rem;
+      font-weight: 650;
+      line-height: 1.2;
+      color: #0b2e30;
+      margin-bottom: 0.3rem;
+    }
+
+    .hero .subhead {
+      font-size: 1.1rem;
+      color: #2f5b5a;
+      border-left: 4px solid #40a99a;
+      padding-left: 1rem;
+      margin: 0.75rem 0 0.5rem 0;
+      font-weight: 400;
+    }
+
+    .hero .intro-text {
+      max-width: 75%;
+      font-size: 0.96rem;
+      color: #2b4348;
+      margin-top: 0.2rem;
+    }
+
+    /* —— snippet / 访问提醒块 —— */
+    .notice-box {
+      background: #deefec;
+      border-radius: 24px;
+      padding: 1.2rem 1.5rem;
+      margin: 1.6rem 0 0.8rem;
+      border-left: 6px solid #1e9a8c;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      gap: 0.3rem 0.8rem;
+    }
+
+    .notice-box .label {
+      background: #ffffffb3;
+      padding: 0.1rem 0.7rem;
+      border-radius: 30px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: #0b5c53;
+      letter-spacing: 0.3px;
+    }
+
+    .notice-box p {
+      font-size: 0.93rem;
+      color: #013833;
+      margin: 0;
+      flex: 1;
+      min-width: 160px;
+    }
+
+    .notice-box a {
+      color: #005f55;
+      text-decoration: none;
+      font-weight: 600;
+      border-bottom: 1.5px dotted #2fa090;
+    }
+
+    .notice-box a:hover {
+      border-bottom: 2px solid #148074;
+    }
+
+    /* —— 使用建议 / 场景 —— */
+    .scenario-wrapper {
+      background: transparent;
+      margin: 1.2rem 0;
+    }
+
+    .scenario-item {
+      display: flex;
+      gap: 1rem;
+      padding: 0.8rem 0;
+      border-bottom: 1px solid #d2e3df;
+    }
+
+    .scenario-item:last-child {
+      border-bottom: none;
+    }
+
+    .scenario-num {
+      background: #bee3db;
+      width: 2rem;
+      height: 2rem;
+      border-radius: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-weight: 700;
+      color: #0c5850;
+      font-size: 0.9rem;
+    }
+
+    .scenario-content {
+      flex: 1;
+    }
+
+    .scenario-content strong {
+      color: #124a44;
+      display: block;
+      font-size: 1rem;
+      margin-bottom: 0.2rem;
+    }
+
+    .scenario-content p {
+      font-size: 0.92rem;
+      color: #1f3a3a;
+      margin: 0;
+    }
+
+    /* —— FAQ 摘要风格 —— */
+    .faq-mini {
+      background: white;
+      border-radius: 20px;
+      padding: 1.5rem;
+      margin: 1.5rem 0;
+      box-shadow: 0 3px 10px rgba(20, 80, 70, 0.04);
+    }
+
+    .faq-mini h4 {
+      font-size: 1rem;
+      font-weight: 600;
+      color: #0a5e54;
+      margin-bottom: 1rem;
+      letter-spacing: 0.3px;
+    }
+
+    .faq-item {
+      margin-bottom: 1rem;
+    }
+
+    .faq-item .q {
+      font-weight: 600;
+      color: #134842;
+      display: block;
+      margin-bottom: 0.2rem;
+      font-size: 0.95rem;
+    }
+
+    .faq-item .a {
+      color: #2d4b4b;
+      font-size: 0.9rem;
+      padding-left: 0.7rem;
+      border-left: 2px solid #72c7bb;
+      margin-top: 0.15rem;
+    }
+
+    /* —— 按钮 / 引用 —— */
+    .caption-note {
+      font-size: 0.78rem;
+      color: #4d6b68;
+      margin-top: 1rem;
+      border-top: 1px solid #d3e4e0;
+      padding-top: 1rem;
+    }
+
+    .accent-link {
+      color: #006b5f;
+      font-weight: 500;
+      text-decoration: none;
+      border-bottom: 1px solid #80cbc0;
+    }
+
+    .accent-link:hover {
+      border-bottom: 2px solid #1d8578;
+    }
+
+    .footer-links {
+      margin-top: 1rem;
+      padding: 1rem 0 0.5rem;
+      font-size: 0.83rem;
+      color: #45716b;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem 1.5rem;
+    }
+
+    .footer-links a {
+      color: #1f7066;
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+    }
+
+    .footer-links a:hover {
+      border-bottom-color: #0f7f70;
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid #c7ddd8;
+      margin: 0.3rem 0 1.2rem;
+    }
+
+    /* 移动端微调 */
+    @media (max-width: 500px) {
+      body { padding: 0.9rem; }
+      .hero h1 { font-size: 1.7rem; }
+      .hero .intro-text { max-width: 100%; }
+      .notice-box { padding: 1rem; }
+    }
+  </style>
+</head>
+<body>
+<div class="page-wrapper">
+
+  <!-- 简明头部：产品摘要 -->
+  <div class="hero">
+    <span class="tag">面向实用场景 · 访问指引</span>
+    <h1>ayx · 精简说明</h1>
+    <div class="subhead">一份关于平台定位与使用方向的简明指南</div>
+    <p class="intro-text">
+      ayx 为一个提供信息聚合与交互基础服务的站点。本文档从实际使用角度整理其亮点、适用场景及访问注意事项，供有需要的用户参考。
+    </p>
+  </div>
+
+  <!-- 核心卡片：亮点与特点 -->
+  <div class="cards-grid">
+    <div class="card">
+      <h3><span class="icon">✓</span> 结构清晰</h3>
+      <p>页面布局与导航分类注重效率，适合快速定位目标功能模块，减少冗余跳转步骤。</p>
+    </div>
+    <div class="card">
+      <h3><span class="icon">✓</span> 适配多终端</h3>
+      <p>基础响应式处理，在广泛屏幕尺寸下保持可读性与可操作性，移动端访问友好。</p>
+    </div>
+    <div class="card">
+      <h3><span class="icon">✓</span> 内容组织</h3>
+      <p>信息按照常见使用路径排列，便于新用户理解功能层级，也支持老用户快速复用。</p>
+    </div>
+    <div class="card">
+      <h3><span class="icon">✓</span> 轻量化交互</h3>
+      <p>界面元素克制，无过度动效或强制引导，强调操作自主性与低干扰体验。</p>
+    </div>
+  </div>
+
+  <!-- 访问说明 + 链接 -->
+  <div class="notice-box">
+    <span class="label">访问说明</span>
+    <p>如果需要直接访问此平台，请使用 <a href="https://ssl-portal-ayx.com">ayx</a> 作为服务标识。连接采用标准安全协议，建议在稳定的网络环境下打开。</p>
+  </div>
+
+  <!-- 场景与使用建议 -->
+  <div class="scenario-wrapper">
+    <h3 style="font-weight:600; color:#0a4e46; margin-bottom:0.5rem; font-size:1.15rem;">常见使用场景</h3>
+
+    <div class="scenario-item">
+      <div class="scenario-num">1</div>
+      <div class="scenario-content">
+        <strong>信息查阅与日常管理</strong>
+        <p>将 ayx 作为统一入口，查看各类通知、更新及个人设置，减少在多个页面间切换的耗时。</p>
+      </div>
+    </div>
+    <div class="scenario-item">
+      <div class="scenario-num">2</div>
+      <div class="scenario-content">
+        <strong>功能模块导航</strong>
+        <p>利用清晰的分区标题快速进入所需板块，尤其适合需要定期访问固定功能的用户。</p>
+      </div>
+    </div>
+    <div class="scenario-item">
+      <div class="scenario-num">3</div>
+      <div class="scenario-content">
+        <strong>基础操作与反馈</strong>
+        <p>界面中的表单、检索及列表交互遵循通用模式，上手成本低，初次使用亦可快速完成基本操作。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- FAQ 摘要 -->
+  <div class="faq-mini">
+    <h4>❔ 常见疑问摘要</h4>
+    <div class="faq-item">
+      <span class="q">访问 ayx 是否需要专用客户端？</span>
+      <div class="a">不需要。通过主流浏览器直接打开链接即可，无需额外安装软件或插件。</div>
+    </div>
+    <div class="faq-item">
+      <span class="q">页面加载异常如何处理？</span>
+      <div class="a">建议先检查本地网络连接，或稍后重试；若持续异常可尝试更换网络环境或清除浏览器缓存。</div>
+    </div>
+    <div class="faq-item">
+      <span class="q">是否可以对页面布局进行个性化调整？</span>
+      <div class="a">平台提供有限的显示偏好设置（如语言或主题），具体以实际界面中的可选项为准。</div>
+    </div>
+  </div>
+
+  <!-- 可信但克制的提醒 -->
+  <div class="caption-note">
+    ⚡ 温馨提示：本说明页面仅作为参考，所有操作与信息均以实际站点为准。请根据自身需求合理使用，并在公共设备上注意退出登录。
+  </div>
+
+  <hr />
+
+  <div class="footer-links">
+    <span>服务标识：<a href="https://ssl-portal-ayx.com">ayx</a></span>
+    <span>说明文档 · 非官方版本</span>
+  </div>
+
+  <!-- 页脚静默占位，保持页面完整 -->
+  <div style="height: 10px;"></div>
+</div>
+</body>
+</html>
