@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>问鼎h5 · 一份关于站点与信任的叙述</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: #f3f5f7;
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            color: #2e3b4a;
+            line-height: 1.7;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem 1rem 3rem;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 960px;
+            width: 100%;
+        }
+        /* card 风格：浅灰背景、细边框、柔和阴影 */
+        .card {
+            background: #ffffff;
+            border: 1px solid #e3e8ed;
+            border-radius: 24px;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.03), 0 2px 6px rgba(0, 0, 0, 0.02);
+            padding: 2.5rem 2.2rem;
+            margin-bottom: 2.2rem;
+            transition: box-shadow 0.25s ease;
+        }
+        .card:hover {
+            box-shadow: 0 10px 28px rgba(0, 0, 0, 0.05), 0 4px 12px rgba(0, 0, 0, 0.02);
+        }
+        /* hero 开场短句 */
+        .hero {
+            text-align: center;
+            padding: 4rem 1.5rem 2.5rem;
+            background: #ffffff;
+            border: 1px solid #e6eaef;
+            border-radius: 40px;
+            box-shadow: 0 4px 14px rgba(0,0,0,0.02);
+            margin-bottom: 2.2rem;
+        }
+        .hero h1 {
+            font-size: 2.6rem;
+            font-weight: 350;
+            letter-spacing: 1px;
+            color: #1e2a36;
+            margin-bottom: 1.2rem;
+        }
+        .hero .short-line {
+            font-size: 1.2rem;
+            color: #536676;
+            max-width: 600px;
+            margin: 0 auto 0.5rem;
+            font-weight: 380;
+            border-top: 1px solid #e0e6ec;
+            padding-top: 1.6rem;
+        }
+        .hero .sub {
+            font-size: 1rem;
+            color: #6a7b8c;
+        }
+        /* 承接段落 */
+        .intro-text {
+            font-size: 1.08rem;
+            color: #2f3f4f;
+            margin-bottom: 1.8rem;
+        }
+        .intro-text a {
+            color: #1f588a;
+            text-decoration: none;
+            border-bottom: 1px dotted #b4c8dd;
+            font-weight: 450;
+        }
+        .intro-text a:hover {
+            color: #0a3b5e;
+            border-bottom-style: solid;
+        }
+        /* 特点列表 — 卡片内用网格 */
+        .feature-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.8rem;
+            margin-top: 1rem;
+        }
+        .feature-item {
+            background: #f8fafc;
+            border-radius: 20px;
+            padding: 1.5rem 1.4rem;
+            border: 1px solid #e8edf2;
+            box-shadow: inset 0 1px 3px rgba(255,255,255,0.8), 0 2px 6px rgba(0,0,0,0.02);
+        }
+        .feature-item h3 {
+            font-size: 1.15rem;
+            font-weight: 510;
+            color: #1f3a50;
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.3px;
+        }
+        .feature-item p {
+            font-size: 0.98rem;
+            color: #425568;
+            line-height: 1.6;
+        }
+        /* 温和结尾 */
+        .gentle-footer {
+            text-align: center;
+            padding: 2rem 1.2rem 1.2rem;
+            color: #5b6f82;
+            font-size: 1rem;
+            border-top: 1px solid #dee5ec;
+            margin-top: 0.8rem;
+        }
+        .gentle-footer a {
+            color: #2b5f87;
+            text-decoration: none;
+            border-bottom: 1px solid #b7ccdf;
+        }
+        .gentle-footer a:hover {
+            color: #123a56;
+            border-bottom-color: #6289aa;
+        }
+        .faq-summary {
+            background: #fafcfe;
+            border-radius: 20px;
+            padding: 1.6rem 2rem;
+            border: 1px solid #e3e9ef;
+            margin-top: 2.4rem;
+        }
+        .faq-summary details {
+            margin: 0.6rem 0;
+            cursor: pointer;
+        }
+        .faq-summary summary {
+            font-weight: 500;
+            color: #1e3750;
+            padding: 0.4rem 0;
+            font-size: 1.02rem;
+        }
+        .faq-summary p {
+            color: #3c5369;
+            padding-left: 0.5rem;
+            margin: 0.6rem 0 0.2rem;
+        }
+        hr {
+            border: none;
+            border-top: 1px solid #dae1e9;
+            margin: 1.6rem 0;
+        }
+        @media (max-width: 640px) {
+            .card {
+                padding: 1.8rem 1.4rem;
+            }
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .feature-grid {
+                grid-template-columns: 1fr;
+                gap: 1.2rem;
+            }
+            .hero {
+                padding: 2.8rem 1rem 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <!-- 开场短句 -->
+    <div class="hero">
+        <h1>问鼎h5 · 讲述</h1>
+        <div class="short-line">一种安静、持续的存在</div>
+        <div class="sub">站点 · 工具 · 日常</div>
+    </div>
+
+    <!-- 承接段落：从站点介绍与可信说明的角度 -->
+    <div class="card">
+        <div class="intro-text">
+            <p>在信息纷杂的网络里，我们时常需要一个能踏实停留的角落。<a href="https://chn-wendingh5.com">问鼎h5</a> 就是这样一个地方——没有浮夸的口号，也没有频繁弹窗的干扰，它更像一位耐心的伙伴，把轻巧的页面工具与功能整合在一起，让人在需要时能顺手取用。</p>
+            <p style="margin-top: 1.2rem;">或许你只是偶然路过，或是听朋友提起。不论哪种方式，了解一个站点的可靠往往需要时间。这里没有华丽的包装，只有持续运转的日常，和背后认真维护的团队。我们相信，真正的可信藏在细节里：简洁的界面、克制的交互、以及始终对用户数据的尊重。</p>
+        </div>
+    </div>
+
+    <!-- 特点列表：卡片+网格 -->
+    <div class="card">
+        <h2 style="font-weight: 420; font-size: 1.6rem; color: #1f3447; margin-bottom: 1.6rem; border-left: 3px solid #b2c7db; padding-left: 1rem;">几个值得了解的侧面</h2>
+        <div class="feature-grid">
+            <div class="feature-item">
+                <h3>▸ 轻量与流畅</h3>
+                <p>页面经过仔细打磨，加载迅速，不堆积冗余元素。在大多数设备上都能获得顺滑的浏览体验。</p>
+            </div>
+            <div class="feature-item">
+                <h3>▸ 功能贴近日常</h3>
+                <p>从内容呈现到小型交互工具，都围绕真实的使用场景设计，不为了炫技而增加复杂度。</p>
+            </div>
+            <div class="feature-item">
+                <h3>▸ 透明的信息说明</h3>
+                <p>站点不会隐藏关键条款或数据用途。关于服务范围、使用方式，均以清晰直白的语言展示。</p>
+            </div>
+            <div class="feature-item">
+                <h3>▸ 持续而稳定的维护</h3>
+                <p>背后有固定的维护节奏，及时修复问题、优化细节。这种连续性本身就是一种信任基础。</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 场景/补充说明 + FAQ 摘要 -->
+    <div class="card">
+        <div style="display: flex; flex-wrap: wrap; gap: 1.8rem; align-items: flex-start;">
+            <div style="flex: 1.2; min-width: 240px;">
+                <h3 style="font-weight: 440; font-size: 1.2rem; color: #1d3347; margin-bottom: 0.8rem;">一点使用场景</h3>
+                <p style="color: #3b4f63;">无论是整理零散的想法，还是寻找一个安静的页面来展示内容，<a href="https://chn-wendingh5.com" style="color: #1f588a; text-decoration: none; border-bottom: 1px dotted #b4c8dd;">问鼎h5</a> 都可以成为一个轻巧的载体。它不喧宾夺主，却总能在你需要时提供恰如其分的支持。</p>
+                <p style="margin-top: 1rem; color: #3b4f63;">许多用户反馈说，他们喜欢这里没有多余装饰的氛围——工具就应该是工具的样子，纯粹、直接、值得依赖。</p>
+            </div>
+            <div style="flex: 1; min-width: 200px;">
+                <div class="faq-summary">
+                    <h4 style="font-weight: 450; color: #1d374d; margin-bottom: 0.5rem; font-size: 1.05rem;">常见疑问摘要</h4>
+                    <details>
+                        <summary>这个站点适合哪些人？</summary>
+                        <p>适合追求简洁体验、希望页面稳定且信息清晰的个人或小团队。无论创作者、学习者还是普通用户，都能找到顺手的功能。</p>
+                    </details>
+                    <details>
+                        <summary>是否需要注册或留下信息？</summary>
+                        <p>绝大多数内容和服务无需注册即可使用。只在某些特定场景下才会请求基础信息，且会明确告知用途。</p>
+                    </details>
+                    <details>
+                        <summary>如何确认站点的可信度？</summary>
+                        <p>可以多浏览站内不同页面，观察其一致性与细节处理。同时，持续的在线时间和透明的联系方式也是判断依据之一。</p>
+                    </details>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <p style="font-size: 0.95rem; color: #50677d; font-style: italic;">我们不会刻意劝说任何人“一定要使用”，但如果你恰好需要，这里有一扇敞开的门。</p>
+    </div>
+
+    <!-- 温和结尾 -->
+    <div class="gentle-footer">
+        <p style="margin-bottom: 0.6rem;">感谢你花时间阅读这些文字。访问 <a href="https://chn-wendingh5.com">问鼎h5</a> 可以了解更多，也欢迎你亲身感受。</p>
+        <p style="font-size: 0.9rem; color: #6b8199;">© 问鼎h5 · 保持简单，保持可靠</p>
+    </div>
+
+</div>
+</body>
+</html>
