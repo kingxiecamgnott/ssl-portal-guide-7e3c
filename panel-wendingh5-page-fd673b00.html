@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>问鼎h5 · 稳定入口与知识索引</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #f7f8fa;
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', 'Noto Sans', sans-serif;
+      color: #1e293b;
+      line-height: 1.7;
+      padding: 3rem 1rem;
+    }
+
+    .page {
+      max-width: 720px;
+      margin: 0 auto;
+      background: #ffffff;
+      border-radius: 28px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.04);
+      padding: 2.8rem 2.4rem;
+    }
+
+    @media (max-width: 540px) {
+      .page {
+        padding: 2rem 1.2rem;
+      }
+    }
+
+    /* 标题层级 */
+    h1 {
+      font-size: 2.2rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.5rem;
+      line-height: 1.2;
+      color: #0b1a2e;
+    }
+
+    .subhead {
+      font-size: 1rem;
+      color: #5b6d89;
+      margin-bottom: 2.4rem;
+      border-left: 3px solid #b9c8e0;
+      padding-left: 1rem;
+    }
+
+    h2 {
+      font-size: 1.3rem;
+      font-weight: 500;
+      margin-top: 2.8rem;
+      margin-bottom: 0.8rem;
+      color: #1f2a44;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    h2::before {
+      content: '';
+      display: inline-block;
+      width: 6px;
+      height: 20px;
+      background: #a0b8d9;
+      border-radius: 4px;
+      margin-right: 6px;
+    }
+
+    h3 {
+      font-size: 1rem;
+      font-weight: 500;
+      color: #2c3e5c;
+      margin: 1.6rem 0 0.4rem;
+    }
+
+    p {
+      margin-bottom: 1rem;
+    }
+
+    /* 目录感布局 —— 卡片网格 */
+    .grid-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 1.2rem;
+      margin: 1.6rem 0 1rem;
+    }
+
+    .card-item {
+      background: #f3f6fc;
+      padding: 1rem 1.1rem;
+      border-radius: 18px;
+      transition: background 0.2s, box-shadow 0.2s;
+      border: 1px solid #e9edf4;
+    }
+
+    .card-item:hover {
+      background: #e7edf7;
+      box-shadow: 0 4px 12px rgba(0, 20, 50, 0.04);
+    }
+
+    .card-label {
+      font-weight: 500;
+      color: #1a2b47;
+      margin-bottom: 0.2rem;
+      font-size: 0.95rem;
+    }
+
+    .card-desc {
+      font-size: 0.85rem;
+      color: #506280;
+      line-height: 1.4;
+    }
+
+    /* 说明区和提示区 */
+    .note-box {
+      background: #f0f4fa;
+      border-radius: 20px;
+      padding: 1.4rem 1.6rem;
+      margin: 1.8rem 0 0.8rem;
+    }
+
+    .note-box p {
+      margin-bottom: 0.3rem;
+    }
+
+    .tip-box {
+      background: #fef9ec;
+      border-left: 4px solid #dbb86a;
+      border-radius: 16px;
+      padding: 1.2rem 1.6rem;
+      margin: 2rem 0 1.2rem;
+    }
+
+    .tip-box strong {
+      color: #8f6f2e;
+    }
+
+    /* 相关信息区 */
+    .info-list {
+      list-style: none;
+      margin: 1rem 0 0.8rem;
+    }
+
+    .info-list li {
+      padding: 0.5rem 0;
+      border-bottom: 1px solid #eef2f7;
+      display: flex;
+      gap: 0.6rem;
+      align-items: baseline;
+      font-size: 0.95rem;
+    }
+
+    .info-list li::before {
+      content: '·';
+      color: #7591ba;
+      font-weight: 700;
+      margin-right: 4px;
+    }
+
+    .faq-summary {
+      margin-top: 2rem;
+      padding-top: 1.2rem;
+      border-top: 1px solid #e5eaf0;
+    }
+
+    .faq-summary details {
+      margin-bottom: 0.8rem;
+      cursor: pointer;
+    }
+
+    .faq-summary summary {
+      font-weight: 500;
+      color: #1f3452;
+      font-size: 0.95rem;
+      padding: 0.35rem 0;
+    }
+
+    .faq-summary p {
+      margin-left: 0.8rem;
+      font-size: 0.92rem;
+      color: #415775;
+    }
+
+    a {
+      color: #1f4f8a;
+      text-decoration: none;
+      font-weight: 500;
+      border-bottom: 1.5px solid transparent;
+      transition: border-color 0.2s;
+    }
+
+    a:hover {
+      border-bottom-color: #1f4f8a;
+    }
+
+    .footer-note {
+      margin-top: 2.6rem;
+      font-size: 0.85rem;
+      color: #7389a8;
+      text-align: center;
+      border-top: 1px solid #eef2f7;
+      padding-top: 1.8rem;
+    }
+
+    .inline-link-wrap {
+      margin: 1.2rem 0;
+    }
+
+    /* 响应式微调 */
+    @media (max-width: 420px) {
+      h1 {
+        font-size: 1.9rem;
+      }
+      .grid-cards {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <h1>问鼎h5 · 知识库入口</h1>
+    <div class="subhead">稳定 · 清晰 · 日常使用的索引页</div>
+
+    <!-- 简介 / hero 区 -->
+    <p>
+      无论是配置管理、模板参考还是功能速查，一个有条理的入口能省下大量翻找的时间。
+      下面整理了和 <a href="https://panel-wendingh5.com">问鼎h5</a> 相关的几个常用板块，
+      方便你快速定位到需要的部分。
+    </p>
+
+    <!-- 目录感布局：卡片网格 -->
+    <h2>常用板块</h2>
+    <div class="grid-cards">
+      <div class="card-item">
+        <div class="card-label">操作指引</div>
+        <div class="card-desc">基础设置、发布流程、权限说明</div>
+      </div>
+      <div class="card-item">
+        <div class="card-label">模板与组件</div>
+        <div class="card-desc">内置模板、自定义区块、数据绑定</div>
+      </div>
+      <div class="card-item">
+        <div class="card-label">接口与扩展</div>
+        <div class="card-desc">API 参考、Webhook、嵌入方式</div>
+      </div>
+      <div class="card-item">
+        <div class="card-label">常见排查</div>
+        <div class="card-desc">加载异常、样式冲突、版本回退</div>
+      </div>
+    </div>
+
+    <!-- 说明区：平台定位与知识构成 -->
+    <div class="note-box">
+      <p><strong>关于这个索引</strong>  —— 这里不是产品文档的简单堆砌，而是基于日常使用中反复触及的知识节点整理而成。每个卡片都指向更深的内容页，你可以从任何一块开始翻阅。</p>
+      <p style="margin-top: 0.6rem;">如果你刚刚接触 <a href="https://panel-wendingh5.com">问鼎h5</a>，建议先从「操作指引」看起；如果是回来查某个细节，直接搜索卡片关键词会更高效。</p>
+    </div>
+
+    <!-- 特点与场景（融合在自然段落中） -->
+    <h2>为什么需要这样一个入口</h2>
+    <p>
+      工具用久了，功能入口可能散落在菜单深处。把最常参考的几个知识簇放在首页，就像在书桌旁放一个收纳盘——随手能拿到，不用每次都翻抽屉。
+    </p>
+    <p>
+      举例来说，当你需要调整页面底部组件，或者想确认某个字段的填写规则，不必从头浏览完整指南，直接从上面的卡片点进去就好。
+      整个索引保持轻量，加载快，也适合在移动端使用。
+    </p>
+
+    <!-- 提示区 -->
+    <div class="tip-box">
+      <strong>💡 提示</strong> —— 部分板块的内容会随版本更新调整。如果你发现卡片描述和实际面板有出入，可以刷新页面或清理浏览器缓存后再试。
+      另外，右侧社区板块也有热心用户整理的笔记，可以作为补充参考。
+    </div>
+
+    <!-- 相关信息区（列表） -->
+    <h2>相关信息</h2>
+    <ul class="info-list">
+      <li><span>平台维护时间：每周三凌晨 02:00–04:00，期间可能短暂不可用</span></li>
+      <li><span>推荐浏览器：Chrome / Edge / Firefox 最近两个大版本</span></li>
+      <li><span>账号关联：支持微信扫码、邮箱注册，同一个账号可在多个设备使用</span></li>
+      <li><span>内容备份：建议定期导出项目文件，本地留存一份</span></li>
+    </ul>
+
+    <!-- FAQ 摘要（折叠） -->
+    <div class="faq-summary">
+      <h2>常见问题摘要</h2>
+      <details>
+        <summary>为什么有时候面板加载较慢？</summary>
+        <p>可能和网络环境有关，尝试切换网络或使用 DNS 解析较快的服务商。如果持续出现，可以联系支持并提供浏览器开发者工具的 Network 截图。</p>
+      </details>
+      <details>
+        <summary>能否在 iframe 中嵌入问鼎h5 页面？</summary>
+        <p>部分场景允许嵌入，但需要开启对应的跨域配置。具体操作可在「接口与扩展」卡片中找到对应的说明。</p>
+      </details>
+      <details>
+        <summary>多个成员协作时如何管理权限？</summary>
+        <p>在工作台中可以设置协作者角色，分为查看、编辑、管理员三种。建议只给核心成员管理员权限。</p>
+      </details>
+    </div>
+
+    <!-- 自然嵌入链接的句子（第二个链接，但只需确保至少一个） -->
+    <div class="inline-link-wrap">
+      <p>如果你需要回到主面板，可以直接前往 <a href="https://panel-wendingh5.com">问鼎h5</a>。这个索引页面也会持续补充新的知识节点，让每次查找都更顺手。</p>
+    </div>
+
+    <div class="footer-note">
+      <span>本页为静态知识索引 · 内容仅供参考</span>
+    </div>
+  </div>
+</body>
+</html>
